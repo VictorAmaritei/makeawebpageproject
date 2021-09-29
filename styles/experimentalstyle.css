@@ -1,0 +1,54 @@
+html {
+    background-color:rgb(176, 90, 197);
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 12px;
+}
+
+h1{
+    font-size: 30px;
+    text-align: center;
+    font-family: "Times New Roman", sans-serif;
+} 
+p, li {
+    font-size: 16 px;
+    line-height: 2;
+    letter-spacing: 1px;
+    font-family: "Source Sans Pro", sans-serif;
+} 
+.bold {
+    font-weight: bold;
+}
+li.bold {
+    font-style: italic;
+}
+p.bold { 
+    text-decoration: underline;
+}
+
+/*body covers nearly the whole page*/
+body {
+    background-color:rgb(115, 164, 255);
+    width: 600px;
+    margin: 0 auto;
+    padding: 0 20px 20px 20px;
+    border: 10px solid rgb(236, 225, 69);
+}
+
+h1 { 
+    margin: 0;
+    padding: 20px 0;
+}
+
+img {
+    display: block;
+    margin: auto;
+    width: 70%;
+   /* height: auto;*/
+}
+
+span.lan.lang {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+
