@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex4: Img Gallery</title>
+    <style>
+        h1 {
+            font-family: helvetica, arial, sans-serif;
+            text-align: center;
+        }
+
+        body {
+            width: 640px;
+            margin: 0 auto;
+        }
+
+        .full-img {
+            display: block;
+            width: 640px;
+            height: 480px;
+        }
+        .thumb-bar {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .thumb-bar img {
+            width: 20%;
+            cursor: pointer;
+        }
+
+        .thumb-bar img:hover(
+            opacity = 0.5
+        )
+    </style>
+</head>
+<body>
+    <h1>Image gallery example</h1>
+
+    <div class="full-img">
+      <img class="displayed-img" src="images/art.jpg">
+    </div>
+
+    <div class="thumb-bar">
+        <!--img src="images/art.jpg">
+        <img src="images/eye.jpg">
+        <img src="images/butterfly.jpg">
+        <img src="images/sand.jpg">
+        <img src="images/flowers.jpg"> -->
+
+    </div>
+    <script>
+        let thumbBar = document.querySelector(".thumb-bar")
+        //array of image names
+        let listOfImages = ["art" , "eye", "butterfly", "sand", "flowers"];
+        //forEach loop: goes through th elements in the array, runs the
+        listOfImages.forEach(function(imageName) {
+           //creates an image element, adds it to the thumb-bar  
+           let imgElm = document.createElement("img");
+           imgElm.src = "images/" + imageName + ".jpg";
+           thumbBar.appendChild(imgElm);
+
+           
+        });   
+
+        //Auto-advancing
+        let nextImageIndex = 0;
+        let intervalID= window.setInterval(function(){
+            let bigImage = document.querySelector(".displayed-img");
+            let imageName = listOfImages[nextImageIndex];
+            bigImage.src = "images/" + imageName + ".jpg"; 
+
+            //advance to next image in the list unless you go over, then reset to 0
+            nextImageIndex = (nextImageIndex + 1) % listOfImages.length;
+        }, 3000);
+
+        //add eventListener for click on the ENTIRE thumbbar
+        thumbBar.addEventListener("click", function(event){
+            let bigImage = document.querySelector(".displayed-img");
+            //event.target is whatever **child** element got clicked
+            bigImage.src = event.target.src  
+            //STOP AUTO ADVANCING
+            window.clearInterval(intervalID);
+        });
+
+        //ALL THIS - BETTER DONE WITH THE CSS :hover    
+        // thumbBar.addEventListener("mouseover", function(Event){
+           //reset ALL thumbnails back to opaque
+           // let allThumbnails = document.querySelectorAll(".thumb-bar img");
+           // allThumbnails.forEach(function(thumbnail){
+                //thumbnail.style.opacity = 1.0;
+            //});
+           //make THIS hovered over thumbnail transparent
+           //event.target.style.opacity = .5;
+        //});
+
+        //Do given function in 5000 milliseconds
+        //window.setTimeout(function(){
+           // alert("BOO!");
+        //}, 5000);
+
+        
+        
+
+        
+        
+        
+        
+        
+    </script>
+</body>
+</html>
